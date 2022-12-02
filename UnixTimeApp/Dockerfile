@@ -18,4 +18,4 @@ FROM mcr.microsoft.com/dotnet/runtime-deps:6.0-alpine
 WORKDIR /App
 EXPOSE 80
 COPY --from=build-env /App/out .
-ENTRYPOINT ["./UnitTimeApp"]
+ENTRYPOINT ["./UnixTimeApp"]

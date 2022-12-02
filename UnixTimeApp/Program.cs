@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace UnitTimeApp;
+namespace UnixTimeApp;
 
 internal class Program
 {

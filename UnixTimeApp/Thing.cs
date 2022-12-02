@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace UnitTimeApp;
+namespace UnixTimeApp;
 
 public class Thing
 {

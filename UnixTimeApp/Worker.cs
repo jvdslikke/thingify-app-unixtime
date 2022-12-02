@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 using System.Text;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace UnitTimeApp;
+namespace UnixTimeApp;
 
 public class Worker : BackgroundService
 {

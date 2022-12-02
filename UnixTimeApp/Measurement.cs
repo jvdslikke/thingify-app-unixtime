@@ -1,6 +1,6 @@
 using System;
 
-namespace UnitTimeApp;
+namespace UnixTimeApp;
 
 public class Measurement
 {

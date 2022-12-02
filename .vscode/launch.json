@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/UnitTimeApp/bin/Debug/net6.0/UnitTimeApp.dll",
+            "program": "${workspaceFolder}/UnixTimeApp/bin/Debug/net6.0/UnixTimeApp.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/UnitTimeApp",
+            "cwd": "${workspaceFolder}/UnixTimeApp",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             //"console": "internalConsole",            
             "console": "integratedTerminal", //https://stackoverflow.com/questions/41195432/debug-console-window-cannot-accept-console-readline-input-during-debugging
