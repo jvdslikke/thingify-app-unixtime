@@ -38,10 +38,10 @@ public class Worker : BackgroundService
             var things = new List<Thing>();
 
             var rainForecastThing = new Thing(
-                "rainforecast",
-                "Rain forecast"
+                "UnixTime",
+                "Unix time"
             );
-            rainForecastThing.MeasurementUnit = "ticks";
+            rainForecastThing.MeasurementUnit = "seconds";
 
             things.Add(rainForecastThing);
 
