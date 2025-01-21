@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/UnixTimeApp/bin/Debug/net6.0/UnixTimeApp.dll",
+            "program": "${workspaceFolder}/UnixTimeApp/bin/Debug/net9.0/UnixTimeApp.dll",
             "args": [],
             "cwd": "${workspaceFolder}/UnixTimeApp",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console

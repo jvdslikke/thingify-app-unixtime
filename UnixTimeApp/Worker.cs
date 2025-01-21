@@ -29,36 +29,33 @@ public class Worker : BackgroundService
     {
         var thingsApiHttpClient = new HttpClient();
 
-        var stopwatch = new Stopwatch();
-
         while (!stoppingToken.IsCancellationRequested)
         {
-            stopwatch.Restart();
+            // measure
+            var measuredOn = DateTime.Now;
+            var measurement = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 
+            // create request data
             var things = new List<Thing>();
 
-            var rainForecastThing = new Thing(
+            var unixTimeThing = new Thing(
                 "UnixTime",
                 "Unix time"
             );
-            rainForecastThing.MeasurementUnit = "seconds";
+            unixTimeThing.MeasurementUnit = "seconds";
 
-            things.Add(rainForecastThing);
+            things.Add(unixTimeThing);
 
-            rainForecastThing.Measurements.Add(new Measurement(DateTime.Now, DateTimeOffset.UtcNow.ToUnixTimeSeconds()));
+            unixTimeThing.Measurements.Add(new Measurement(measuredOn, measurement));
 
-            stopwatch.Stop();
-
-            var waitTime = _scanInterval - stopwatch.Elapsed;
-            if (waitTime.Ticks < 0)
-            {
-                waitTime = _scanInterval;
-            }
-            _logger.LogInformation("Sending data to service and waiting for {WaitTimeSecs} seconds", waitTime.TotalSeconds);
+            _logger.LogInformation("Sending data to service");
             
             _ = PostThings(things, thingsApiHttpClient);
 
-            await Task.Delay(waitTime, stoppingToken);
+            var timeToWaitToNextSecond = measuredOn.Add(_scanInterval) - DateTime.Now;
+            _logger.LogInformation("Waiting for {WaitTimeSecs} seconds", timeToWaitToNextSecond.TotalSeconds);
+
+            await Task.Delay(timeToWaitToNextSecond, stoppingToken);
         }
     }
 
@@ -74,7 +71,7 @@ public class Worker : BackgroundService
             _logger.LogInformation("API call started");
             try
             {
-                var result = await httpClient.PatchAsync("http://thingify-core:80/api-rest/things", thingsJson);
+                var result = await httpClient.PatchAsync("http://localhost:5036/api-rest/things", thingsJson);
 
                 result.EnsureSuccessStatusCode();
                 _logger.LogInformation("API call completed succesfully");
